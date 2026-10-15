@@ -12,7 +12,7 @@ In a clone of the GitHub repo to run cooknship on (you need push access, and `gh
 The source repo is private: this release (its notes, the releases repo's README, what `install.sh` prints) and the `AGENTS.md` init writes have everything you need. Don't inspect the binary or look for the source; ask the CLI: `cooknship --help`, `cooknship schema [COMMAND]`.
 
 ```bash
-curl -fsSL https://github.com/alebairos/cooknship-machine-releases/releases/download/v0.1.10/install.sh | sh
+curl -fsSL https://github.com/alebairos/cooknship-machine-releases/releases/download/v0.1.11/install.sh | sh
 cooknship init --single-repo --plan   # prints what init will create and what it hands off; changes nothing
 cooknship init --single-repo
 cooknship next
@@ -22,7 +22,7 @@ cooknship next
 - **Run `init` once** (rerun only if it failed); after that only `init --refresh`.
 - **Creates:** the `cooknship/ledger` branch, and `AGENTS.md` and the agent skills on `main` (one commit). `cooknship/book` comes with the first landing or `init --refresh`. It fast-forwards your clone when it is clean on `main`; otherwise run the `local` command it prints, before the workflow step.
 - **Hands off, does not commit:** the land workflow (step `workflow`: `cooknship init --workflow --single-repo --land <mode>` into `.github/workflows/cooknship-land.yml`, pushed with a token that may push workflow files; the plan prints the mode: `pr` by default, `direct` with `--land direct`). The required `cooknship` check on `main` waits for it: run `cooknship init --refresh` after.
-- **Admin rights** on the repo are needed to protect the ledger branch, require the check, turn rebase merging off and, in `pr` mode, "Allow GitHub Actions to create and approve pull requests" (step `pull-requests`). Without them, init does the rest and prints the exact handoff for someone who has them.
+- **Admin rights** on the repo are needed to protect the ledger branch, require the check, turn rebase merging off and, in `pr` mode, "Allow GitHub Actions to create and approve pull requests" (step `pull-requests`). Without them, init does the rest and prints the exact handoff for someone who has them; list them for your human in your report and continue: an agent session never runs them, even when its token can.
 - **Then** init's last line is `cooknship: Done. Next: cooknship next`. This session runs the command on that line, with no `--as`: a bare `next` runs as your GitHub login, the signer. `AGENTS.md` says how sessions the human starts later get their ids; don't invent one.
 <!-- quickstart end -->
 
