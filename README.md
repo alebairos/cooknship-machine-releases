@@ -12,7 +12,7 @@ In a clone of the GitHub repo to run cooknship on (you need push access, and `gh
 The source repo is private: this release (its notes, the releases repo's README, what `install.sh` prints) and the `AGENTS.md` init writes have everything you need. Don't inspect the binary or look for the source; ask the CLI: `cooknship --help`, `cooknship schema [COMMAND]`.
 
 ```bash
-curl -fsSL https://github.com/alebairos/cooknship-machine-releases/releases/download/v0.1.13/install.sh | sh
+curl -fsSL https://github.com/alebairos/cooknship-machine-releases/releases/download/v0.1.15/install.sh | sh
 cooknship init --single-repo --plan   # prints what init will create and what it hands off; changes nothing
 cooknship init --single-repo
 cooknship next
