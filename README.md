@@ -12,13 +12,13 @@ In a clone of the GitHub repo to run cooknship on (you need push access, and `gh
 The source repo is private: this release (its notes, the releases repo's README, what `install.sh` prints) and the `AGENTS.md` init writes have everything you need. Don't inspect the binary or look for the source; ask the CLI: `cooknship --help`, `cooknship schema [COMMAND]`.
 
 ```bash
-curl -fsSL https://github.com/alebairos/cooknship-machine-releases/releases/download/v0.1.21/install.sh | sh
+curl -fsSL https://github.com/alebairos/cooknship-machine-releases/releases/download/v0.1.22/install.sh | sh
 cooknship init     # at a terminal: guided; an agent gets the two choices, with their commands
 cooknship doctor   # checks the host; changes nothing
 cooknship next
 ```
 
-- **At a terminal**, bare `cooknship init` asks for the products, the test and the tokens, shows the plan (`will do`, `nothing to do`, or `needs <who>`: an admin, you, a signer, the HITL, or another step first) and runs it once you confirm. It starts with `signer: <login> (this session's GitHub login; …)`.
+- **At a terminal**, bare `cooknship init` asks for the host, the products and the tokens (the test, the check and the toolchains are your agent's, from `next`), shows the plan (`will do`, `nothing to do`, or `needs <who>`: an admin, you, a signer, the HITL, or another step first) and runs it once you confirm. It starts with `signer: <login> (this session's GitHub login; …)`.
 - **An agent** gets the two choices (the host is its own product, or products in their own repos) as `choices`, each with its command: show them to your human and run the one they pick, with the `handoff` lines as printed.
 - **Rerun `init` any time:** the same flags change nothing, and on a set-up host bare `init` is the doctor. To change the test, the products or AGENTS.md: `cooknship init --refresh`.
 - **Creates:** the `cooknship/ledger` branch, and `AGENTS.md` and the agent skills on `main` (one commit). `cooknship/book` comes with the first landing or `init --refresh`. It fast-forwards your clone when it is clean on `main`; otherwise run the `local` command it prints, before the workflow step.
